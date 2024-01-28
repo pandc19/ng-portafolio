@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InfoPagina } from '../interfaces/infor-pagina-interface';
+import { InfoPagina } from '../interfaces/info-pagina.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +31,10 @@ export class InfoPaginaService {
   }
 
   private cargarEquipo() {
-    this.http.get('https://angular-html-33299-default-rtdb.firebaseio.com/equipo.json')
+    this.http.get<any[]>('https://angular-html-33299-default-rtdb.firebaseio.com/equipo.json')
       .subscribe(resp => {
-        this.equipo = resp as any[];
-        console.log(resp);
+        this.equipo = resp;
+        // console.log(resp);
       });
   }
 }
